@@ -1,0 +1,44 @@
+
+//Color Pallet
+$LightDark: #161925;
+$Dark: #0D1321;
+$Grey: #6B818C;
+$White: #FCF7F8;
+$Pink: #AF125A;
+$Green: #6BD425;
+$Red: #D00000;
+
+.NavBar{
+    height: 100%;
+    width: 75px;
+    float: left;
+    background-color: $LightDark;
+}
+
+.NavButton{
+    height: 33.333333%;
+    width: 100%;
+    background-color: $Dark;
+    display: grid;
+
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: 200ms;
+
+    &:hover{
+        background-color: $LightDark;
+    }
+
+    &:first-of-type{
+        border-top-right-radius: 30px;
+    }
+
+    &:last-of-type{
+        border-bottom-right-radius: 30px;
+    }
+}
+
+.NavButtonIcon{
+    background-color: inherit;
+    margin: auto;
+}
