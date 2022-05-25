@@ -1,0 +1,34 @@
+@font-face {
+  font-family: Roboto;
+  src: url("../Fonts/Roboto-Light.ttf");
+}
+* {
+  margin: 0px;
+  font-family: Roboto;
+}
+
+* {
+  color: #FCF7F8;
+  text-align: center;
+}
+
+.HomePageMain {
+  height: 100%;
+  width: calc(100% - 75px);
+  float: left;
+}
+
+.HomePageLogo {
+  margin: 30px;
+}
+
+.HomePageTitle {
+  color: #AF125A;
+  font-size: 60px;
+  margin: 15px;
+  margin-bottom: 50px;
+}
+
+.HomePageInfo, .HomePageLine {
+  margin-bottom: 15px;
+}/*# sourceMappingURL=HomePage.css.map */

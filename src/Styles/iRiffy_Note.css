@@ -1,0 +1,8 @@
+@font-face {
+  font-family: Roboto;
+  src: url("../Fonts/Roboto-Light.ttf");
+}
+* {
+  margin: 0px;
+  font-family: Roboto;
+}/*# sourceMappingURL=iRiffy_Note.css.map */

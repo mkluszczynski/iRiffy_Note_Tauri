@@ -1,0 +1,29 @@
+@import "./iRiffy_Note.scss";
+
+*{
+    color: $White;
+    text-align: center;
+}
+
+.HomePageMain{
+    height: 100%;
+    width: calc(100% - 75px);
+
+    float: left;
+}
+
+.HomePageLogo{
+    margin: 30px;
+}
+
+.HomePageTitle{
+    color: $Pink;
+    font-size: 60px;
+    margin: 15px;
+
+    margin-bottom: 50px;
+}
+
+.HomePageInfo, .HomePageLine{
+    margin-bottom: 15px;
+}

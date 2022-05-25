@@ -7,10 +7,12 @@ $Pink: #AF125A;
 $Green: #6BD425;
 $Red: #D00000;
 
-.App{
-  height: 100vh;
-  width: 100vw;
-  background-color: $LightDark;
+@font-face {
+    font-family: Roboto;
+    src: url("../Fonts/Roboto-Light.ttf");
+}
 
-  margin: 0px;
+*{
+    margin: 0px;
+    font-family: Roboto;
 }
