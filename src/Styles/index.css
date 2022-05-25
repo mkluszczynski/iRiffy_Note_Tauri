@@ -1,7 +1,8 @@
-body {
-  margin: 0px;
+@font-face {
+  font-family: Roboto;
+  src: url("../Fonts/Roboto-Light.ttf");
 }
-
 * {
-  font-family: roboto;
+  margin: 0px;
+  font-family: Roboto;
 }/*# sourceMappingURL=index.css.map */

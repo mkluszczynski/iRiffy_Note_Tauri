@@ -1,1 +1,1 @@
-{"version":3,"sources":["../Scss/App.scss","App.css"],"names":[],"mappings":"AASA;EACE,aAAA;EACA,YAAA;EACA,yBAXU;EAaV,WAAA;ACTF","file":"App.css"}
+{"version":3,"sources":["../Scss/iRiffy_Note.scss","App.css","../Scss/App.scss"],"names":[],"mappings":"AASA;EACI,mBAAA;EACA,qCAAA;ACRJ;ADWA;EACI,WAAA;EACA,mBAAA;ACTJ;;ACLA;EACE,aAAA;EACA,YAAA;EACA,yBFJU;EEMV,WAAA;ADOF","file":"App.css"}

@@ -9,9 +9,24 @@ function App() {
   
   const [page, setPage] = useState("home");
 
+  function loadHomePage(){
+    console.log("Clicked on home");
+    setPage("home");
+  }
+
+  function loadAddPage(){
+    setPage("add");
+    console.log("Clicked on add");
+  }
+
+  function loadListPage(){
+    setPage("list");
+    console.log("Clicked on list");
+  }
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar onHomeClick={loadHomePage} onAddClick={loadAddPage} onListClick={loadListPage}/>
       {page === "home" && <HomePage />}
       {page === "add" && <AddPage />}
       {page === "list" && <ListPage />}

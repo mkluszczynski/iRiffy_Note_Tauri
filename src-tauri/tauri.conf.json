@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "minHeight": 800,
         "resizable": true,
         "title": "Notatnik iRiffy",
-        "width": 800
+        "minWidth": 1040
       }
     ]
   }

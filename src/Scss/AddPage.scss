@@ -1,0 +1,168 @@
+@import "./iRiffy_Note.scss";
+
+.AddPageMain{
+    height: 100%;
+    width: calc(100% - 75px);
+    float: left;
+}
+
+.AddPageForm{
+    height: 100%;
+    width: 50%;
+    float: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddPageWorks{
+    height: 100%;
+    width: 50%;
+    float: left;
+    background-color: $Dark;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AddInput{
+    height: 50px;
+    width: 400px;
+    margin-top: 20px;
+
+    font-size: 25px;
+    background-color: $Dark;
+
+    border: 3px solid $Pink;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:focus{
+        cursor: text;
+        transform: scale(1.1);
+        color: $White;
+        outline: none;
+    }
+}
+
+.AddOrderButton{
+    height: 50px;
+    width: 400px;
+    margin-top: 20px;
+    
+    font-size: 25px;
+    background-color: $Dark;
+
+    border: 3px solid $Green;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        background-color: $Green;
+        color: $Dark;
+    }
+        
+}
+
+.WorkInput{
+    height: 35px;
+    width: 400px;
+    margin-top: 20px;
+
+    font-size: 25px;
+    background-color: $Dark;
+
+    border: 3px solid $Pink;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:focus{
+        cursor: text;
+        transform: scale(1.1);
+        color: $White;
+        outline: none;
+    }
+}
+
+.WorkForm{
+    width: 75%;
+    border: 1px solid $Pink;
+    border-radius: 7px;
+    padding: 5px;
+
+}
+
+.DeleteWorkButton{
+    transform: scale(0.7);
+    float: right;
+}
+
+//Checkbox CSS
+.WorkIsDoneDiv{
+    height: 35px;
+    width: 400px;
+    margin-top: 20px;
+
+    background-color: $Dark;
+
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.WorkIsDoneLabel{
+    color: $White;
+    font-size: 25px;
+
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.WorkIsDoneInput{
+    appearance: none;
+    height: 25px;
+    width: 25px;
+    background-color: $Dark;
+    border: 2px solid $Pink;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    margin-left: 5px;
+    cursor: pointer;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &::after{
+        display: none;
+        content: "🗸";
+        color: $Green;
+    }
+
+    &:hover{
+        background-color: $Pink;
+        transform: scale(1.2);
+    }
+
+    &:checked::after{
+        display: block;
+    }
+}
