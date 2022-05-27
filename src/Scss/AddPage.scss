@@ -94,29 +94,67 @@
     }
 }
 
+.WorkTextArea{
+    width: 400px;
+    margin-top: 20px;
+
+    resize: none;
+    text-align: center;
+
+    font-size: 25px;
+    background-color: $Dark;
+
+    border: 3px solid $Pink;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:focus{
+        cursor: text;
+        transform: scale(1.1);
+        color: $White;
+        outline: none;
+    }
+}
+
 .WorkForm{
     width: 75%;
+    height: auto;
     border: 1px solid $Pink;
     border-radius: 7px;
     padding: 5px;
 
+    display: grid;
 }
 
 .DeleteWorkButton{
-    transform: scale(0.7);
+    margin: 0px;
+}
+
+.DeleteWorkImg{
+    transform: scale(0.8);
     float: right;
 }
 
 //Checkbox CSS
+.WorkIsDoneWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .WorkIsDoneDiv{
     height: 35px;
     width: 400px;
     margin-top: 20px;
+    margin-bottom: 20px;
 
     background-color: $Dark;
 
     border-radius: 7px;
 
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
