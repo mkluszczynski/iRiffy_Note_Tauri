@@ -1,0 +1,38 @@
+@font-face {
+  font-family: Roboto;
+  src: url("../Fonts/Roboto-Light.ttf");
+}
+* {
+  margin: 0px;
+  font-family: Roboto;
+}
+
+.RefPanel {
+  height: 90%;
+  width: 90%;
+  position: absolute;
+  left: calc(50% + 37.5px);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #0D1321;
+  border: 2px solid #AF125A;
+  border-radius: 10px;
+}
+
+.RefPanelMain {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ExitRefButton {
+  width: 100%;
+}
+
+.ExitRefButtonImg {
+  float: right;
+  margin: 10px;
+}/*# sourceMappingURL=RefPanel.css.map */

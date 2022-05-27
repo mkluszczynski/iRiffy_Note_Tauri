@@ -22,15 +22,20 @@
     float: left;
     background-color: $Dark;
 
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .AddInput{
     height: 50px;
     width: 400px;
     margin-top: 20px;
+    color: $White;
 
     font-size: 25px;
     background-color: $Dark;
@@ -44,7 +49,6 @@
     &:focus{
         cursor: text;
         transform: scale(1.1);
-        color: $White;
         outline: none;
     }
 }
@@ -76,6 +80,7 @@
     height: 35px;
     width: 400px;
     margin-top: 20px;
+    color: $White;
 
     font-size: 25px;
     background-color: $Dark;
@@ -89,7 +94,6 @@
     &:focus{
         cursor: text;
         transform: scale(1.1);
-        color: $White;
         outline: none;
     }
 }
@@ -97,6 +101,7 @@
 .WorkTextArea{
     width: 400px;
     margin-top: 20px;
+    color: $White;
 
     resize: none;
     text-align: center;
@@ -113,7 +118,29 @@
     &:focus{
         cursor: text;
         transform: scale(1.1);
-        color: $White;
+        outline: none;
+    }
+}
+
+.WorkRefButton{
+    height: 37px;
+    width: 400px;
+    margin-top: 20px;
+    color: $White;
+
+    font-size: 25px;
+    background-color: $Dark;
+
+    border: 3px solid $Pink;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        background-color: $Pink;
         outline: none;
     }
 }
@@ -124,8 +151,37 @@
     border: 1px solid $Pink;
     border-radius: 7px;
     padding: 5px;
+    margin-bottom: 20px;
 
     display: grid;
+}
+
+.AddWorkButton{
+    height: 35px;
+    width: 75%;
+    //margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $Dark;
+
+    border: 2px solid $Pink;
+    border-radius: 7px;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        outline: none;
+    }
+}
+
+.AddWorkButtonImg{
+    transform: scale(0.7);
 }
 
 .DeleteWorkButton{
@@ -135,6 +191,16 @@
 .DeleteWorkImg{
     transform: scale(0.8);
     float: right;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1);
+        outline: none;
+    }
+    
 }
 
 //Checkbox CSS

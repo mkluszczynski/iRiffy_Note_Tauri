@@ -28,15 +28,19 @@
   width: 50%;
   float: left;
   background-color: #0D1321;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .AddInput {
   height: 50px;
   width: 400px;
   margin-top: 20px;
+  color: #FCF7F8;
   font-size: 25px;
   background-color: #0D1321;
   border: 3px solid #AF125A;
@@ -48,7 +52,6 @@
 .AddInput:focus {
   cursor: text;
   transform: scale(1.1);
-  color: #FCF7F8;
   outline: none;
 }
 
@@ -75,6 +78,7 @@
   height: 35px;
   width: 400px;
   margin-top: 20px;
+  color: #FCF7F8;
   font-size: 25px;
   background-color: #0D1321;
   border: 3px solid #AF125A;
@@ -86,13 +90,13 @@
 .WorkInput:focus {
   cursor: text;
   transform: scale(1.1);
-  color: #FCF7F8;
   outline: none;
 }
 
 .WorkTextArea {
   width: 400px;
   margin-top: 20px;
+  color: #FCF7F8;
   resize: none;
   text-align: center;
   font-size: 25px;
@@ -106,7 +110,26 @@
 .WorkTextArea:focus {
   cursor: text;
   transform: scale(1.1);
+  outline: none;
+}
+
+.WorkRefButton {
+  height: 37px;
+  width: 400px;
+  margin-top: 20px;
   color: #FCF7F8;
+  font-size: 25px;
+  background-color: #0D1321;
+  border: 3px solid #AF125A;
+  border-radius: 7px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.WorkRefButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #AF125A;
   outline: none;
 }
 
@@ -116,7 +139,31 @@
   border: 1px solid #AF125A;
   border-radius: 7px;
   padding: 5px;
+  margin-bottom: 20px;
   display: grid;
+}
+
+.AddWorkButton {
+  height: 35px;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0D1321;
+  border: 2px solid #AF125A;
+  border-radius: 7px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.AddWorkButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.AddWorkButtonImg {
+  transform: scale(0.7);
 }
 
 .DeleteWorkButton {
@@ -126,6 +173,14 @@
 .DeleteWorkImg {
   transform: scale(0.8);
   float: right;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.DeleteWorkImg:hover {
+  cursor: pointer;
+  transform: scale(1);
+  outline: none;
 }
 
 .WorkIsDoneWrapper {
