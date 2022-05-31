@@ -28,11 +28,11 @@
   width: 50%;
   float: left;
   background-color: #0D1321;
+  overflow: auto;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 

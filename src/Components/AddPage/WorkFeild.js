@@ -7,16 +7,21 @@ import DeleteWorkButton from './InputComponents/DeleteWorkButton'
 import AddTextArea from './InputComponents/AddTextArea'
 import AddRefButton from './InputComponents/AddRefButton'
 
-const WorkFeild = () => {
+const WorkFeild = ({ onRefOpen, workId, onDelete }) => {
+
+  function DeleteWork() {
+    onDelete(workId);
+  }
+
   return (
     <div className='WorkForm'>
-        <DeleteWorkButton onClick={""} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg"/>
-            
-        <AddInput placeholder="Nazwa pracy" id="workName" name="workName" className="WorkInput"/>
-        <AddInput placeholder="Typ pracy" id="workType" name="workType" className="WorkInput"/>
-        <AddTextArea placeholder="Notatki" id="workNotes" name="workNotes" className="WorkTextArea" rows="7"/>
-        <AddRefButton title="Refki" onClick={""} className="WorkRefButton"/>
-        <AddCheckbox classNameComponent="WorkIsDoneWrapper" classNameDiv="WorkIsDoneDiv" classNameLabel="WorkIsDoneLabel" classNameInput="WorkIsDoneInput" id="workIsDone" name="workIsDone" title="Skończone"/>
+      <DeleteWorkButton onClick={DeleteWork} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg" />
+
+      <AddInput placeholder="Nazwa pracy" id={"workName" + workId} name="workName" className="WorkInput" />
+      <AddInput placeholder="Typ pracy" id={"workType" + workId} name="workType" className="WorkInput" />
+      <AddTextArea placeholder="Notatki" id={"workNotes" + workId} name="workNotes" className="WorkTextArea" rows="7" />
+      <AddRefButton title="Refki" onClick={onRefOpen} className="WorkRefButton" />
+      <AddCheckbox classNameComponent="WorkIsDoneWrapper" classNameDiv="WorkIsDoneDiv" classNameLabel="WorkIsDoneLabel" classNameInput="WorkIsDoneInput" id={"workIsDone" + workId} name="workIsDone" title="Skończone" />
     </div>
   )
 }

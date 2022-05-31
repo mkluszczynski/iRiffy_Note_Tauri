@@ -2,8 +2,8 @@ import React from 'react'
 
 const AddRefButton = ({title, onClick, className}) => {
   return (
-    <div>
-        <input type="button" value={title} onClick={onClick} className={className} />
+    <div onClick={onClick}>
+        <input type="button" value={title}  className={className} />
     </div>
   )
 }

@@ -22,7 +22,7 @@
         "removeDir": true,
         "removeFile": true,
         "renameFile": true,
-        "scope": ["$APP\\data\\*", "C:\\Users\\mateu\\AppData\\Roaming\\com.tauri.dev\\data\\*", "$DOCUMENT\\iRiffyNoteData\\*"],
+        "scope": ["$APP/data.json"],
         "writeFile": true
       }
     },
