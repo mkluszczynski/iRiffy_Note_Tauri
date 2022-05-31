@@ -15,6 +15,7 @@ const AddPage = () => {
   const [orderData, setOrderData] = useState([]);
   const [worksData, setWorksData] = useState([]);
   const [noOfWorks, setNoOfWorks] = useState(0);
+  const [idOfWork, setIdOfWork] = useState(0);
   const [isRefPanelOpen, setIsRefPanelOpen] = useState(false);
   //const orderId = orderData.length;
 
@@ -23,9 +24,19 @@ const AddPage = () => {
     SetUpData();
   }, orderData);
 
+  useEffect(() => {
+    SaveWorks();
+  }, worksData);
+
   //Changes state of refpanel if refbutton has been clicked or refpanel should close
   function OpenRefPanel() {
-    setIsRefPanelOpen(!isRefPanelOpen);
+    setIsRefPanelOpen(true);
+    SaveWorks();
+    console.log(isRefPanelOpen);
+  }
+
+  function CloseRefPanel(){
+    setIsRefPanelOpen(false);
   }
 
   //Get path to json data file
@@ -43,6 +54,7 @@ const AddPage = () => {
   }
 
   function AddNewWork(){
+    SaveWorks();
     let workId = worksData.length;
     let workName = "";
     let workType = "";
@@ -68,21 +80,33 @@ const AddPage = () => {
       let workName = document.getElementById("workName" + i).value;
       let workType = document.getElementById("workType" + i).value;
       let workNotes = document.getElementById("workNotes" + i).value;
-      let workIsDone = document.getElementById("workIsDone" + i).value;
+      let workIsDone = document.getElementById("workIsDone" + i).checked;
 
       worksData[i].workName = workName;
       worksData[i].workType = workType;
       worksData[i].workNotes = workNotes;
       worksData[i].workIsDone = workIsDone;
     }
-    console.log(worksData);
   }
 
   function DelateWork(workId){
+    SaveWorks();
     worksData.splice(workId, 1)
 
     for(let i = 0 ; i < worksData.length ; i++){
       worksData[i].workId = i;
+      document.getElementById("workName" + i).value = worksData[i].workName;
+      document.getElementById("workType" + i).value = worksData[i].workType;
+      document.getElementById("workNotes" + i).value = worksData[i].workNotes;
+      document.getElementById("workIsDone" + i).checked = worksData[i].workIsDone;
+
+      if(document.getElementById("workIsDone" + i).checked){
+        document.getElementById("workForm" + i).style.borderColor = "#6BD425";
+      }
+      else{
+        document.getElementById("workForm" + i).style.borderColor = "#AF125A";
+      }
+
     }
 
     setNoOfWorks(noOfWorks - 1);
@@ -101,11 +125,13 @@ const AddPage = () => {
 
     SaveWorks();
     let works = worksData;
+
+    console.log(worksData);
   }
 
   return (
     <div className='AddPageMain'>
-      {isRefPanelOpen && <RefPanel onClose={OpenRefPanel} />}
+      { isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workName={ worksData[idOfWork].workName }/>}
       <div className='AddPageForm'>
         <div>
           <AddInput placeholder="Imię" id="orderName" name="orderName" className="AddInput" />
@@ -121,7 +147,7 @@ const AddPage = () => {
       <div className='AddPageWorks'>
         {/* <WorkFeild onRefOpen={OpenRefPanel} workId={0} /> */}
         {worksData.map((item, index) => {
-          return <WorkFeild onRefOpen={OpenRefPanel} workId={index} onDelete={DelateWork}/>
+          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork}/>
         })}
         <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="AddWorkButton" classNameImg="AddWorkButtonImg" />
       </div>
