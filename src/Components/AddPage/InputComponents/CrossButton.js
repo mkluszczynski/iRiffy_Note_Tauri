@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeleteWorkButton = ({imgSrc, alt, className, classNameImg, onClick}) => {
+const CrossButton = ({imgSrc, alt, className, classNameImg, onClick}) => {
   return (
     <div className={className}>
         <img src={imgSrc} alt={alt} onClick={onClick} className={classNameImg}/>
@@ -8,4 +8,4 @@ const DeleteWorkButton = ({imgSrc, alt, className, classNameImg, onClick}) => {
   )
 }
 
-export default DeleteWorkButton
+export default CrossButton

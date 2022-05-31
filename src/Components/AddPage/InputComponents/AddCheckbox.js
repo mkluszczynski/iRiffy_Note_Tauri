@@ -14,7 +14,7 @@ const AddCheckbox = ({classNameComponent,classNameDiv, classNameLabel, className
   return (
     <div className={classNameComponent}>
         <div className={classNameDiv}>
-            <label for={id} className={classNameLabel}>
+            <label htmlFor={id} className={classNameLabel}>
             {title} 
             <input type="checkbox" id={id} name={name} className={classNameInput} onClick={OnCheck}/>
             </label> 

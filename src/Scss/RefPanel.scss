@@ -37,4 +37,16 @@
 .ExitRefButtonImg{
     float: right;
     margin: 10px;
+
+    transform: scale(0.8);
+    float: right;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1);
+        outline: none;
+    }
 }

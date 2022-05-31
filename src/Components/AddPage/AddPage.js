@@ -8,12 +8,13 @@ import Plus from "../../Svg/Plus.svg"
 import AddWorkButton from './InputComponents/AddWorkButton'
 import RefPanel from '../RefPanel/RefPanel'
 import { appDir, join } from '@tauri-apps/api/path'
-import { readTextFile } from '@tauri-apps/api/fs'
+import { readTextFile, writeFile } from '@tauri-apps/api/fs'
 
 const AddPage = () => {
 
   const [orderData, setOrderData] = useState([]);
   const [worksData, setWorksData] = useState([]);
+  const [refData, setRefData] = useState([]);
   const [noOfWorks, setNoOfWorks] = useState(0);
   const [idOfWork, setIdOfWork] = useState(0);
   const [isRefPanelOpen, setIsRefPanelOpen] = useState(false);
@@ -28,11 +29,10 @@ const AddPage = () => {
     SaveWorks();
   }, worksData);
 
-  //Changes state of refpanel if refbutton has been clicked or refpanel should close
+
   function OpenRefPanel() {
     setIsRefPanelOpen(true);
     SaveWorks();
-    console.log(isRefPanelOpen);
   }
 
   function CloseRefPanel(){
@@ -67,7 +67,7 @@ const AddPage = () => {
       "workType": workType,
       "workNotes": workNotes,
       "workIsDone": workIsDone,
-      "refImgs": []
+      "workRefImgs": []
     }
 
     worksData.push(newWorkObj);
@@ -116,6 +116,7 @@ const AddPage = () => {
   async function SaveData(){
     let jsonData = orderData;
     
+    let orderId = orderData.length;
     let orderName = document.getElementById("orderName").value;
     let orderType = document.getElementById("orderType").value;
     let orderDate = document.getElementById("orderDate").value;
@@ -126,12 +127,30 @@ const AddPage = () => {
     SaveWorks();
     let works = worksData;
 
-    console.log(worksData);
+    let orderObj = {
+      "orderId": orderId,
+      "orderName": orderName,
+      "orderType": orderType,
+      "orderDate": orderDate,
+      "orderDeadline": orderDeadline,
+      "orderStatus": orderStatus,
+      "orderCost": orderCost,
+      "works": works
+    }
+
+    orderData.push(orderObj);
+
+    await writeFile({
+      "path": await GetPath(),
+      "contents": JSON.stringify(orderData)
+    });
+
+    console.log(orderData);
   }
 
   return (
     <div className='AddPageMain'>
-      { isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workName={ worksData[idOfWork].workName }/>}
+      {/* { isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workName={ worksData[idOfWork].workName } />} */}
       <div className='AddPageForm'>
         <div>
           <AddInput placeholder="Imię" id="orderName" name="orderName" className="AddInput" />
@@ -147,7 +166,7 @@ const AddPage = () => {
       <div className='AddPageWorks'>
         {/* <WorkFeild onRefOpen={OpenRefPanel} workId={0} /> */}
         {worksData.map((item, index) => {
-          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork}/>
+          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork} shouldRefPanelRender={isRefPanelOpen} onClose={CloseRefPanel} workData={item}/>
         })}
         <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="AddWorkButton" classNameImg="AddWorkButtonImg" />
       </div>

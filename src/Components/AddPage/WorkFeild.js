@@ -3,11 +3,12 @@ import Cross from '../../Svg/DeleteArt.svg'
 import '../../Styles/AddPage.css'
 import AddInput from './InputComponents/AddInput'
 import AddCheckbox from './InputComponents/AddCheckbox'
-import DeleteWorkButton from './InputComponents/DeleteWorkButton'
 import AddTextArea from './InputComponents/AddTextArea'
 import AddRefButton from './InputComponents/AddRefButton'
+import CrossButton from './InputComponents/CrossButton'
+import RefPanel from '../RefPanel/RefPanel'
 
-const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete }) => {
+const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete, shouldRefPanelRender, onClose, workData}) => {
 
   function DeleteWork() {
     onDelete(workId);
@@ -20,7 +21,8 @@ const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete }) => {
 
   return (
     <div className='WorkForm' id={"workForm" + workId}>
-      <DeleteWorkButton onClick={DeleteWork} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg" />
+      {shouldRefPanelRender && <RefPanel onClose={onClose} workId={workId} workName={workData.workName} workRefImgs={workData.workRefImgs}/>}
+      <CrossButton onClick={DeleteWork} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg" />
 
       <AddInput placeholder="Nazwa pracy" id={"workName" + workId} name="workName" className="WorkInput" />
       <AddInput placeholder="Typ pracy" id={"workType" + workId} name="workType" className="WorkInput" />
