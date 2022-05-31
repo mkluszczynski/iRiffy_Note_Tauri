@@ -11,7 +11,7 @@ import RefPanel from '../RefPanel/RefPanel'
 const AddPage = () => {
   return (
     <div className='AddPageMain'>
-      <RefPanel />
+      {/* <RefPanel /> */}
       <div className='AddPageForm'>
         <div>
           <AddInput placeholder="Imię" id="orderName" name="orderName" className="AddInput" />

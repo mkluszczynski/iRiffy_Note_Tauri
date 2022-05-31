@@ -1,6 +1,6 @@
 import React from 'react'
 import "../../Styles/HomePage.css"
-import Logo from "../../Svg/HiEmote.svg"
+import Logo from "../../Svg/iRiffyNoteLogo.svg"
 import Line from "../../Svg/Line.svg"
 
 const HomePage = () => {
