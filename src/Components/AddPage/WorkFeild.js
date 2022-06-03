@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Cross from '../../Svg/DeleteArt.svg'
 import '../../Styles/AddPage.css'
 import AddInput from './InputComponents/AddInput'
