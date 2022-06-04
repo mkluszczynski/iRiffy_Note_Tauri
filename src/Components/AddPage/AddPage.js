@@ -9,6 +9,7 @@ import AddWorkButton from './InputComponents/AddWorkButton'
 import RefPanel from '../RefPanel/RefPanel'
 import { appDir, join } from '@tauri-apps/api/path'
 import { readTextFile, writeFile } from '@tauri-apps/api/fs'
+import { wait } from '@testing-library/user-event/dist/utils'
 
 const AddPage = () => {
 
@@ -166,7 +167,7 @@ const AddPage = () => {
       <div className='AddPageWorks'>
         {/* <WorkFeild onRefOpen={OpenRefPanel} workId={0} /> */}
         {worksData.map((item, index) => {
-          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork} shouldRefPanelRender={isRefPanelOpen} onClose={CloseRefPanel} workData={item}/>
+          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork} shouldRefPanelRender={isRefPanelOpen} onRefClose={CloseRefPanel} workData={item}/>
         })}
         <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="AddWorkButton" classNameImg="AddWorkButtonImg" />
       </div>

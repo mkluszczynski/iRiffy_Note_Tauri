@@ -45,4 +45,8 @@
   cursor: pointer;
   transform: scale(1);
   outline: none;
+}
+
+.RefPanelImgContener {
+  overflow: auto;
 }/*# sourceMappingURL=RefPanel.css.map */
