@@ -53,4 +53,66 @@
 
 .RefPanelImgContener{
     overflow: auto;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.RefImgItem{
+
+    height: 50vh;
+    width: 28vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background-color: $Dark;
+    border: 2px solid $Pink;
+    border-radius: 10px;
+}
+
+.RefImgItemImg{
+    
+    position: relative;
+
+    margin: 4px;
+
+    max-height: 50vh;
+    max-width: 28vw;
+    
+}
+
+.RefImgItemFrame{
+    height: 50vh;
+    width: 28vw;
+
+    margin: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DeleteRefButton{
+    position: relative;
+    z-index: 1;
+
+    float: right;
+    margin: 0px;
+
+    transform: scale(0.8);
+    float: right;
+
+    transition-timing-function: ease-in-out;
+    transition-property: all;
+    transition-duration: 300ms;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1);
+        outline: none;
+    }
 }

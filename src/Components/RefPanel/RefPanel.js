@@ -9,8 +9,8 @@ import RefItem from './RefItem'
 
 const RefPanel = ({ workId, workName, onClose, onOpen, workRefImgs }) => {
   
-  const [refData, setRefData] = useState([]);
-  const [hehe, setHehe] = useState(0);
+  let refData = [];
+  const [reloadCounter, setReloadCounter] = useState(0);
 
   function LoadPanel() {
     LoadRefData();
@@ -31,28 +31,27 @@ const RefPanel = ({ workId, workName, onClose, onOpen, workRefImgs }) => {
     }
   }
 
+  //Removes event listener form file input
   function RemoveInputListener(){
     const input = document.getElementById("fileInput" + workId);
     input.removeEventListener("change", LoadFileReader);
   }
 
+  //Creates FileReader to get file form file input
   function LoadFileReader() {
     const reader = new FileReader();
 
+    //When reader gets file, its adding it ro refData array
     reader.onload = function () {
       refData.push(reader.result);
-      console.log("Added",reader.result);
-      console.log("Add RefData", refData)
     }
 
+    //When reader ends loading file, we save workRefData
     reader.onloadend = function () {
       RemoveInputListener();
       SaveRefData();
       LoadRefData();
-      Button();
-
-      console.log("Save RefData", refData)
-      console.log("Save workRefData", workRefImgs)
+      Reload();
     }
 
     reader.readAsDataURL(this.files[0]);
@@ -101,20 +100,23 @@ const RefPanel = ({ workId, workName, onClose, onOpen, workRefImgs }) => {
       }
       workRefImgs.push(refObj);
     }
+  }
 
-    const y = refData.length;
-    for (let i = 0; i < y; i++) {
-      refData.pop();
-    }
+  
+  function Reload(){
+    setReloadCounter(value => value + 1);
+    console.log("Reload", reloadCounter);
+  }
+  
+  function DeleteRefImg(id){
+    refData.splice(id, 1);
+    SaveRefData();
+    Reload();
   }
 
   let test = workRefImgs.map((item, index) => {
-    return <RefItem refImgSrc={item.refUrl} refImgId={index} />
+    return <RefItem refImgSrc={item.refUrl} refImgId={index} deleteRefImg={DeleteRefImg} />
   });
-
-  function Button(){
-    setHehe(hehe => hehe + 1);
-  }
 
   return (
     <div className='RefPanel' onLoad={LoadPanel}>
