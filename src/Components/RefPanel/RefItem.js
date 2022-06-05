@@ -3,10 +3,10 @@ import "../../Styles/RefPanel.css"
 import CrossButton from '../AddPage/InputComponents/CrossButton';
 import Cross from "../../Svg/DeleteArt.svg"
 
-const RefItem = ({ refImgSrc, refImgId, deleteRefImg }) => {
+const RefItem = ({ refImgSrc, refImgId, onDelete }) => {
 
     function Delete(){
-        deleteRefImg(refImgId);
+        onDelete(refImgId);
     }
 
     return (
@@ -14,7 +14,8 @@ const RefItem = ({ refImgSrc, refImgId, deleteRefImg }) => {
             <div className='RefImgItem' id={"refItem" + refImgId} >
                 <CrossButton imgSrc={Cross} alt="Cross" className="DeleteRefButton" classNameImg="ExitRefButtonImg" onClick={Delete} />
                 <div className='RefImgItemFrame'>
-                    <img src={refImgSrc} alt={"refImage" + refImgId} className="RefImgItemImg" ></img>
+                    <h1>{refImgSrc}</h1>
+                    {/* <img src={refImgSrc} alt={"refImage" + refImgId} className="RefImgItemImg" ></img> */}
                 </div>
             </div>
         </div>

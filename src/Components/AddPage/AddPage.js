@@ -38,6 +38,7 @@ const AddPage = () => {
 
   function CloseRefPanel(){
     setIsRefPanelOpen(false);
+    console.log(worksData);
   }
 
   //Get path to json data file
@@ -151,13 +152,12 @@ const AddPage = () => {
 
   return (
     <div className='AddPageMain'>
-      {/* { isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workName={ worksData[idOfWork].workName } />} */}
       <div className='AddPageForm'>
         <div>
           <AddInput placeholder="Imię" id="orderName" name="orderName" className="AddInput" />
           <AddInput placeholder="Typ zamówienia" id="orderType" name="orderType" className="AddInput" />
           <AddInput placeholder="Data zamówienia" id="orderDate" name="orderDate" className="AddInput" />
-          <AddInput placeholder="Deadline" id="orderDeadline" name="orderDeadline" className="AddInput" />
+          <AddInput placeholder="Deadline" id="orderDeadline" name="orderDeadline" className="AddInput" /> 
           <AddInput placeholder="Status zamówienia" id="orderStatus" name="orderStatus" className="AddInput" />
           <AddInput placeholder="Koszt zamówienia" id="orderCost" name="orderCost" className="AddInput" />
           <br></br>
@@ -165,12 +165,12 @@ const AddPage = () => {
         </div>
       </div>
       <div className='AddPageWorks'>
-        {/* <WorkFeild onRefOpen={OpenRefPanel} workId={0} /> */}
         {worksData.map((item, index) => {
-          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork} shouldRefPanelRender={isRefPanelOpen} onRefClose={CloseRefPanel} workData={item}/>
+          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork}/>
         })}
         <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="AddWorkButton" classNameImg="AddWorkButtonImg" />
       </div>
+      {isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workId={idOfWork} workData={worksData[idOfWork]}/>}
     </div>
   )
 }

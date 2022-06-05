@@ -15,8 +15,8 @@ const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete, shouldRefPanelRende
   }
 
   function OpenRef(){
-    onRefOpen();
     setWorkId(workId);
+    onRefOpen();
   }
 
   return (
