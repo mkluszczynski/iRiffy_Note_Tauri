@@ -21,7 +21,6 @@ const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete, shouldRefPanelRende
 
   return (
     <div className='WorkForm' id={"workForm" + workId}>
-      {shouldRefPanelRender && <RefPanel onClose={onRefClose} onOpen={OpenRef} workId={workId} workName={workData.workName} workRefImgs={workData.workRefImgs}/>}
       <CrossButton onClick={DeleteWork} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg" />
 
       <AddInput placeholder="Nazwa pracy" id={"workName" + workId} name="workName" className="WorkInput" />

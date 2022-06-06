@@ -146,6 +146,14 @@
   transition-duration: 300ms;
 }
 
+.NoDataInfo {
+  height: 50%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .AddWorkButton {
   height: 35px;
   width: 75%;

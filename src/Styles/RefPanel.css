@@ -28,6 +28,30 @@
   flex-direction: column;
 }
 
+.InputContener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AddRefButton {
+  font-size: 20px;
+  background-color: #161925;
+  background-color: #0D1321;
+  border: 2px solid #AF125A;
+  border-radius: 5px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.AddRefButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  outline: none;
+  background-color: #AF125A;
+  color: #0D1321;
+}
+
 .ExitRefButton {
   width: 100%;
 }
@@ -50,51 +74,91 @@
 .RefPanelImgContener {
   overflow: auto;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.RefImgItem {
-  height: 50vh;
+.NoDataInfo {
+  height: 70vh;
   width: 28vw;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.RefItem {
+  height: 51vh;
+  width: 28vw;
+  margin: 5px;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   background-color: #0D1321;
   border: 2px solid #AF125A;
   border-radius: 10px;
 }
 
-.RefImgItemImg {
+.RefItemImg {
   position: relative;
   margin: 4px;
-  max-height: 50vh;
-  max-width: 28vw;
+  max-height: 49vh;
+  max-width: 27vw;
 }
 
-.RefImgItemFrame {
+.RefItemFrame {
   height: 50vh;
   width: 28vw;
   margin: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.RefItemImgFrame {
+  height: 50vh;
+  width: 28vw;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .DeleteRefButton {
   position: relative;
   z-index: 1;
+  order: 0;
   float: right;
+  justify-self: stretch;
   margin: 0px;
   transform: scale(0.8);
-  float: right;
   transition-timing-function: ease-in-out;
   transition-property: all;
   transition-duration: 300ms;
 }
 .DeleteRefButton:hover {
   cursor: pointer;
-  transform: scale(1);
+  transform: scale(0.9);
   outline: none;
+}
+
+.FocusFrame {
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.FocusImg {
+  max-height: 95%;
+  max-width: 95%;
 }/*# sourceMappingURL=RefPanel.css.map */

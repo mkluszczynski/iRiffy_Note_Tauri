@@ -10,26 +10,15 @@ import RefPanel from '../RefPanel/RefPanel'
 import { appDir, join } from '@tauri-apps/api/path'
 import { readTextFile, writeFile } from '@tauri-apps/api/fs'
 import { wait } from '@testing-library/user-event/dist/utils'
+import NoDataInfo from './NoDataInfo'
 
 const AddPage = () => {
 
   const [orderData, setOrderData] = useState([]);
   const [worksData, setWorksData] = useState([]);
-  const [refData, setRefData] = useState([]);
   const [noOfWorks, setNoOfWorks] = useState(0);
   const [idOfWork, setIdOfWork] = useState(0);
   const [isRefPanelOpen, setIsRefPanelOpen] = useState(false);
-  //const orderId = orderData.length;
-
-
-  useEffect(() => {
-    SetUpData();
-  }, orderData);
-
-  useEffect(() => {
-    SaveWorks();
-  }, worksData);
-
 
   function OpenRefPanel() {
     setIsRefPanelOpen(true);
@@ -116,8 +105,7 @@ const AddPage = () => {
   }
 
   async function SaveData(){
-    let jsonData = orderData;
-    
+
     let orderId = orderData.length;
     let orderName = document.getElementById("orderName").value;
     let orderType = document.getElementById("orderType").value;
@@ -148,16 +136,21 @@ const AddPage = () => {
     });
 
     console.log(orderData);
+    window.location.reload();
   }
 
+  const Works = worksData.map((item, index) => {
+    return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork}/>
+  });
+
   return (
-    <div className='AddPageMain'>
+    <div className='AddPageMain' onLoad={SetUpData}>
       <div className='AddPageForm'>
         <div>
           <AddInput placeholder="Imię" id="orderName" name="orderName" className="AddInput" />
           <AddInput placeholder="Typ zamówienia" id="orderType" name="orderType" className="AddInput" />
-          <AddInput placeholder="Data zamówienia" id="orderDate" name="orderDate" className="AddInput" />
-          <AddInput placeholder="Deadline" id="orderDeadline" name="orderDeadline" className="AddInput" /> 
+          <AddInput placeholder="Data zamówienia" id="orderDate" name="orderDate" className="AddInput" pattern="\d{2}.\d{2}.\d{4}"/>
+          <AddInput placeholder="Deadline" id="orderDeadline" name="orderDeadline" className="AddInput" pattern="\d{2}.\d{2}.\d{4}"/> 
           <AddInput placeholder="Status zamówienia" id="orderStatus" name="orderStatus" className="AddInput" />
           <AddInput placeholder="Koszt zamówienia" id="orderCost" name="orderCost" className="AddInput" />
           <br></br>
@@ -165,9 +158,8 @@ const AddPage = () => {
         </div>
       </div>
       <div className='AddPageWorks'>
-        {worksData.map((item, index) => {
-          return <WorkFeild onRefOpen={OpenRefPanel} setWorkId={setIdOfWork} workId={index} onDelete={DelateWork}/>
-        })}
+        {worksData.length === 0 && <NoDataInfo infoToShow="Brak prac..." className="NoDataInfo"/>}
+        {Works}
         <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="AddWorkButton" classNameImg="AddWorkButtonImg" />
       </div>
       {isRefPanelOpen && <RefPanel onClose={CloseRefPanel} workId={idOfWork} workData={worksData[idOfWork]}/>}

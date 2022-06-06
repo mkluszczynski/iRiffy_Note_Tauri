@@ -4,51 +4,93 @@ import CrossButton from '../AddPage/InputComponents/CrossButton'
 import "../../Styles/RefPanel.css"
 import Cross from "../../Svg/DeleteArt.svg"
 import RefItem from './RefItem'
+import FocusImg from './FocusImg'
+import NoDataInfo from '../AddPage/NoDataInfo'
 
 
 
 const RefPanel = ({ workId, workData, onClose }) => {
 
   const [x, setX] = useState(0);
+  const [imgToAdd, setImgToAdd] = useState("");
+  const [imgToFocus, setImgToFocus] = useState();
+  const [isFocused, setIsFocused] = useState(false);
 
   function LoadPanel() {
-    console.log("Load")
+    AddInputListener();
   }
 
-  function Reload (){
+  function Reload() {
     setX(value => value + 1)
-    console.log("Reload", x);
   }
 
-  function AddRefImg(refUrl){
+  //Adds event listener to input and set imgToAdd after load 
+  function AddInputListener() {
+    const input = document.getElementById("fileInput" + workId);
+
+    input.addEventListener("change", () => {
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        setImgToAdd(reader.result);
+      });
+
+      reader.readAsDataURL(input.files[0]);
+    })
+  }
+
+  function AddRefImg(refUrl) {
+    //If there is no url to add, stop this function
+    if (refUrl === "") {
+      return;
+    }
+
+    //Prepare object to add
     let refObj = {
       "refId": workData.workRefImgs.length,
       "refUrl": refUrl
     }
+
     workData.workRefImgs.push(refObj);
-    console.log(workData);
     Reload();
   }
 
-  function DeleteRefImg(refId){
+  function DeleteRefImg(refId) {
     workData.workRefImgs.splice(refId, 1);
-    console.log(workData);
+
+    //Refresh ids of refObjects 
+    for (let i = 0; i < workData.workRefImgs.length; i++) {
+      workData.workRefImgs[i].refId = i;
+    }
+    Reload();
   }
 
-  const RefImgsComponent = workData.workRefImgs.map((item, index) => {
-    // return <RefItem refImgSrc={item.refUrl} refImgId={item.refId} onDelete={DeleteRefImg}/>
-    return <h1>{item.refUrl}</h1>
+  function FocusImage(imgId) {
+    setImgToFocus(imgId);
+    setIsFocused(true);
+  }
+
+  function UnFocusImage() {
+    setIsFocused(false);
+  }
+
+  const RefImgItems = workData.workRefImgs.map((item, index) => {
+    return <RefItem refImgUrl={item.refUrl} refImgId={item.refId} onDelete={() => DeleteRefImg(item.refId)} onImgFocus={() => FocusImage(item.refId)} />
   });
 
   return (
     <div className='RefPanel' onLoad={LoadPanel}>
+      {isFocused && <FocusImg imgUrl={workData.workRefImgs[imgToFocus].refUrl} onClose={UnFocusImage} />}
       <div className='RefPanelMain'>
         <CrossButton imgSrc={Cross} alt="Cross" className="ExitRefButton" classNameImg="ExitRefButtonImg" onClick={onClose} />
-        <h1>{workData.workName + " " + workId}</h1>
-        <input type="file" id={"fileInput" + workId} />
-        <input type="button" value="Add" onClick={AddRefImg} />
+        <h1>{workData.workName}</h1>
+        <div className='InputContener'>
+          <input type="file" id={"fileInput" + workId} accept="image/* "/>
+          <input type="button" value="Dodaj" className='AddRefButton' onClick={() => AddRefImg(imgToAdd)} />
+        </div>
         <div className='RefPanelImgContener'>
-        {RefImgsComponent}
+          {workData.workRefImgs.length === 0 && <NoDataInfo infoToShow="Brak refek..." className="NoDataInfo" />}
+          {RefImgItems}
         </div>
       </div>
     </div>
