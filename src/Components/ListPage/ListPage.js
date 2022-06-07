@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react'
 
 import "../../Styles/ListPage.css"
 import NoDataInfo from '../AddPage/NoDataInfo';
+import EditPanel from './EditPanel/EditPanel';
 
 import ListItem from './ListItem';
 
 const ListPage = () => {
 
   const [orderData, setOrderData] = useState([]);
+  const [orderEditId, setOrderEditId] = useState();
+  const [isEditPanelOpen, setIsEditPanelOpen] = useState(false);
 
   useEffect(() => {
     SetUpData();
@@ -30,8 +33,15 @@ const ListPage = () => {
     console.log("Hihi")
   }
 
+  function OpenEditPanel(orderId){
+    console.log(orderId);
+    console.log(orderData);
+    setOrderEditId(orderId);
+    setIsEditPanelOpen(true);
+  }
+
   const OrdersList = orderData.map((item, index) => {
-    return <ListItem orderData={item} />
+    return <ListItem orderData={item} onEditClick={() => OpenEditPanel(item.orderId)}/>
   });
 
 
@@ -39,7 +49,7 @@ const ListPage = () => {
     <div className="ListPage" onLoad={SetUpData} >
       {OrdersList}
       {orderData.length === 0 && <NoDataInfo infoToShow="Brak informacji"/>}
-      
+      {isEditPanelOpen && <EditPanel orderData={orderData[orderEditId]} />}
     </div>
   )
 }

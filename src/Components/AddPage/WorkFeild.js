@@ -8,7 +8,7 @@ import AddRefButton from './InputComponents/AddRefButton'
 import CrossButton from './InputComponents/CrossButton'
 import RefPanel from '../RefPanel/RefPanel'
 
-const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete, shouldRefPanelRender, onRefClose, workData}) => {
+const WorkFeild = ({ onRefOpen, setWorkId, workId, onDelete }) => {
 
   function DeleteWork() {
     onDelete(workId);

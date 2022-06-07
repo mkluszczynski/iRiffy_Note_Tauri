@@ -21,7 +21,7 @@
 }
 
 .ListItem {
-  height: 23%;
+  height: 20%;
   width: 80%;
   margin: 10;
   background-color: #0D1321;
@@ -49,8 +49,103 @@
 }
 
 .ListButton {
+  height: 100%;
+  width: 20%;
   grid-row: span 2/span 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.ListButton:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+  outline: none;
+}
+
+.AddInput {
+  height: 50px;
+  width: 400px;
+  margin-top: 20px;
+  color: #FCF7F8;
+  font-size: 25px;
+  background-color: #0D1321;
+  border: 3px solid #AF125A;
+  border-radius: 7px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.AddInput:focus {
+  cursor: text;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.EditPanel {
+  position: absolute;
+  height: 90%;
+  width: 90%;
+  background-color: #161925;
+  border: 3px solid #AF125A;
+  border-radius: 20px;
+}
+
+.OrderForm {
+  height: 100%;
+  width: 50%;
+  float: right;
+  background-color: #161925;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WorksForm {
+  height: 100%;
+  width: 50%;
+  float: left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  border-radius: 20px;
+  background-color: #0D1321;
+}
+
+.WorkItem {
+  width: 80%;
+  height: auto;
+  border: 1px solid #AF125A;
+  border-radius: 7px;
+  padding: 5px;
+  margin-top: 20px;
+  display: grid;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+
+.WorkButton {
+  height: 35px;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0D1321;
+  border: 2px solid #AF125A;
+  border-radius: 7px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.WorkButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  outline: none;
 }/*# sourceMappingURL=ListPage.css.map */

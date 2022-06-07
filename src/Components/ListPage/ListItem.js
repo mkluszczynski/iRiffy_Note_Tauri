@@ -4,33 +4,26 @@ import "../../Styles/ListPage.css"
 import List from "../../Svg/ListTasks.svg"
 import ListDataLabel from './ListDataLabel';
 
-const ListItem = ({ orderData }) => {
+const ListItem = ({ orderData, onEditClick }) => {
 
     const [noOfWorksToDo, setNoOfWorksToDo] = useState(0);
     const [noOfWorksDone, setNoOfWorksDone] = useState(0);
 
     useEffect(() => {
-        SetWorksDone();
+        SetWorksToDo();
     }, []);
 
     function SetWorksToDo(){
-        orderData.works.map((item) => {
-            if(item.workIsDone === false){
+        setNoOfWorksToDo(0);
+        setNoOfWorksDone(0);
+        for(let i = 0 ; i < orderData.works.length; i++) {
+            if(orderData.works[i].workIsDone === false){
                 setNoOfWorksToDo(value => value + 1);
             }
-        })
-    }
-
-    function SetWorksDone(){
-        orderData.works.map((item) => {
-            if(item.workIsDone === true){
-                setNoOfWorksDone(noOfWorksDone + 1);
+            else if(orderData.works[i].workIsDone === true){
+                setNoOfWorksDone(value => value + 1);
             }
-            else if(item.workIsDone === false)
-            {
-                setNoOfWorksToDo(noOfWorksToDo + 1);
-            }
-        })
+        }
     }
 
     return (
@@ -46,7 +39,9 @@ const ListItem = ({ orderData }) => {
                 <ListDataLabel dataToShow={"❌:" + noOfWorksToDo} className="ListDataLabel"/>
             </div>
 
-            <img src={List} alt="help" className='ListButton'/>
+            <div className='ListButton' onClick={onEditClick}>
+                <img src={List} alt="help" className='ListButtonImg`'/>
+            </div>
         </div>
     )
 }
