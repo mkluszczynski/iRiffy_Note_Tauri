@@ -1,4 +1,4 @@
-import { readTextFile } from '@tauri-apps/api/fs';
+import { readTextFile, writeFile } from '@tauri-apps/api/fs';
 import { appDir, join } from '@tauri-apps/api/path';
 import React, { useEffect, useState } from 'react'
 
@@ -16,7 +16,8 @@ const ListPage = () => {
 
   useEffect(() => {
     SetUpData();
-  }, []);
+    console.log("XDDDDDDDDD")
+  }, [isEditPanelOpen]);
 
   //Get path to json data file
   async function GetPath() {
@@ -30,7 +31,6 @@ const ListPage = () => {
       .then(res => {
         setOrderData(JSON.parse(res))
       });
-    console.log("Hihi")
   }
 
   function OpenEditPanel(orderId){
@@ -40,8 +40,32 @@ const ListPage = () => {
     setIsEditPanelOpen(true);
   }
 
+  function CloseEditPanel(){
+    console.log("Close Editpanel");
+    setIsEditPanelOpen(false);
+  }
+
+  async function SaveOrder(){
+    await writeFile({
+      "path": await GetPath(),
+      "contents": JSON.stringify(orderData)
+    });
+    console.log(orderData);
+  }
+
+  function DeleteOrder(orderId){
+
+    orderData.splice(orderId, 1);
+
+    for(let i = 0 ; i < orderData.length ; i++){
+      orderData[i].orderId = i;
+    }
+
+    SaveOrder();
+  }
+
   const OrdersList = orderData.map((item, index) => {
-    return <ListItem orderData={item} onEditClick={() => OpenEditPanel(item.orderId)}/>
+    return <ListItem orderData={item} onEditClick={() => OpenEditPanel(item.orderId)} isEdit={isEditPanelOpen}/>
   });
 
 
@@ -49,7 +73,7 @@ const ListPage = () => {
     <div className="ListPage" onLoad={SetUpData} >
       {OrdersList}
       {orderData.length === 0 && <NoDataInfo infoToShow="Brak informacji"/>}
-      {isEditPanelOpen && <EditPanel orderData={orderData[orderEditId]} />}
+      {isEditPanelOpen && <EditPanel orderData={orderData[orderEditId]} onClose={CloseEditPanel} onOrderSave={SaveOrder} onOrderDelete={DeleteOrder}/>}
     </div>
   )
 }

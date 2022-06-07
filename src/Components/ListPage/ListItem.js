@@ -4,14 +4,14 @@ import "../../Styles/ListPage.css"
 import List from "../../Svg/ListTasks.svg"
 import ListDataLabel from './ListDataLabel';
 
-const ListItem = ({ orderData, onEditClick }) => {
+const ListItem = ({ orderData, onEditClick, isEdit }) => {
 
     const [noOfWorksToDo, setNoOfWorksToDo] = useState(0);
     const [noOfWorksDone, setNoOfWorksDone] = useState(0);
 
     useEffect(() => {
         SetWorksToDo();
-    }, []);
+    }, [isEdit]);
 
     function SetWorksToDo(){
         setNoOfWorksToDo(0);
@@ -31,7 +31,7 @@ const ListItem = ({ orderData, onEditClick }) => {
             <div className='ListLabelContener'>
                 <ListDataLabel dataToShow={"Imię: " + orderData.orderName} className="ListDataLabel"/>
                 <ListDataLabel dataToShow={"Typ zamówienia: " + orderData.orderType} className="ListDataLabel"/>
-                <ListDataLabel dataToShow={"Data zamówienia: " + orderData.ordreDate} className="ListDataLabel"/>
+                <ListDataLabel dataToShow={"Data zamówienia: " + orderData.orderDate} className="ListDataLabel"/>
                 <ListDataLabel dataToShow={"Deadline zamówienia: " + orderData.orderDeadline} className="ListDataLabel"/>
                 <ListDataLabel dataToShow={"Status zamówienia: "+ orderData.orderStatus} className="ListDataLabel"/>
                 <ListDataLabel dataToShow={"Koszt zamówienia: " + orderData.orderCost} className="ListDataLabel"/>

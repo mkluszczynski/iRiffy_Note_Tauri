@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Cross from "../../../Svg/DeleteArt.svg"
 import '../../../Styles/AddPage.css'
@@ -12,38 +12,20 @@ import AddCheckbox from '../../AddPage/InputComponents/AddCheckbox'
 
 const WorkItem = ({ workId, workData, onRefOpen, onDelete }) => {
 
-    useEffect(() => {
-        console.log("WorkData", workData)
-        LoadWorkData();
-    }, []);
-
+    
     function DeleteWork() {
-        onDelete();
+        onDelete(workId);
+        console.log("Deleted workId", workId)
     }
 
     function OpenRef() {
         onRefOpen();
     }
 
-    function SetCheckBox() {
-        if (document.getElementById("workIsDone" + workId).checked) {
-            document.getElementById("workForm" + workId).style.borderColor = "#6BD425";
-        } else {
-            document.getElementById("workForm" + workId).style.borderColor = "#AF125A";
-        }
-        console.log("Changed border");
-    }
 
-    function LoadWorkData() {
-        document.getElementById("workName" + workId).value = workData.workName;
-        document.getElementById("workType" + workId).value = workData.workType;
-        document.getElementById("workNotes" + workId).value = workData.workNotes;
-        document.getElementById("workIsDone" + workId).checked = workData.workIsDone;
-        SetCheckBox();
-    }
 
     return (
-        <div className='WorkItem' id={"workForm" + workId}>
+        <div className='WorkItem' id={"workForm" + workId} >
             <CrossButton onClick={DeleteWork} imgSrc={Cross} alt="DeleteWork" className="DeleteWorkButton" classNameImg="DeleteWorkImg" />
 
             <AddInput placeholder="Nazwa pracy" id={"workName" + workId} name="workName" className="WorkInput" />

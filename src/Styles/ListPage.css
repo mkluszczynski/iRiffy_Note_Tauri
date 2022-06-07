@@ -102,6 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .WorksForm {
@@ -148,4 +149,41 @@
   cursor: pointer;
   transform: scale(1.1);
   outline: none;
+}
+
+.CloseEditButton {
+  width: 100%;
+}
+
+.CloseEditButtonImg {
+  transform: scale(0.9);
+  float: right;
+  margin-right: 20px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.CloseEditButtonImg:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.DeleteOrderButton {
+  height: 50px;
+  width: 400px;
+  margin-top: 20px;
+  font-size: 25px;
+  background-color: #0D1321;
+  border: 3px solid #D00000;
+  border-radius: 7px;
+  transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+.DeleteOrderButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #D00000;
+  color: #0D1321;
 }/*# sourceMappingURL=ListPage.css.map */
