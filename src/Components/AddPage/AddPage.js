@@ -9,7 +9,6 @@ import AddWorkButton from './InputComponents/AddWorkButton'
 import RefPanel from '../RefPanel/RefPanel'
 import { appDir, join } from '@tauri-apps/api/path'
 import { readTextFile, writeFile } from '@tauri-apps/api/fs'
-import { wait } from '@testing-library/user-event/dist/utils'
 import NoDataInfo from './NoDataInfo'
 
 const AddPage = () => {
@@ -42,6 +41,7 @@ const AddPage = () => {
       .then(res => {
         setOrderData(JSON.parse(res))
       });
+    console.log("SetUp",orderData);
   }
 
   function AddNewWork(){

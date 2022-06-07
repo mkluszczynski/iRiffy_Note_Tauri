@@ -1,0 +1,61 @@
+@import "./iRiffy_Note.scss";
+
+.ListPage{
+    height: 100%;
+    width: calc(100% - 75px);
+
+    background-color: $LightDark;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    float: left;
+
+    overflow: auto;
+}
+
+.ListItem{
+    height: 23%;
+    width: 80%;
+
+    margin: 10;
+
+    background-color: $Dark;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid $Pink;
+    border-radius: 20px;
+}
+
+.ListLabelContener{
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ListDataLabel{
+
+    height: 100%;
+    width: 100%;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ListButton{
+    grid-row: span 2/ span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
