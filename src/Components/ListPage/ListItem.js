@@ -27,7 +27,8 @@ const ListItem = ({ orderData, onEditClick, isEdit }) => {
     }
 
     return (
-        <div className='ListItem'>
+        // <div className='xxx'>
+            <div className='ListItem'>
             <div className='ListLabelContener'>
                 <ListDataLabel dataToShow={"Imię: " + orderData.orderName} className="ListDataLabel"/>
                 <ListDataLabel dataToShow={"Typ zamówienia: " + orderData.orderType} className="ListDataLabel"/>
@@ -43,6 +44,7 @@ const ListItem = ({ orderData, onEditClick, isEdit }) => {
                 <img src={List} alt="help" className='ListButtonImg`'/>
             </div>
         </div>
+        // </div>
     )
 }
 

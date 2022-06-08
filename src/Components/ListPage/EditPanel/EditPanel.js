@@ -11,11 +11,14 @@ import Cross from "../../../Svg/DeleteArt.svg"
 import CrossButton from '../../AddPage/InputComponents/CrossButton'
 
 import "../../../Styles/ListPage.css"
+import RefPanel from '../../RefPanel/RefPanel'
 
 const EditPanel = ({ orderData, onClose, onOrderSave, onOrderDelete }) => {
 
     const [worksCopy, setWorksCopy] = useState(orderData.works);
     const [noOfWorks, setNoOfWorks] = useState(orderData.works.length);
+    const [workRefId, setWorkRefId] = useState(0);
+    const [isRefOpen, setIsRefOpen] = useState(false);
 
     useEffect(() => {
         LoadOrderData();
@@ -144,17 +147,23 @@ const EditPanel = ({ orderData, onClose, onOrderSave, onOrderDelete }) => {
         onClose();
     }
 
-    function OpenRefPanel(){
+    function OpenRefPanel(workId){
+        setIsRefOpen(true);
+        setWorkRefId(workId);
+    }
 
+    function CloseRefPanel(){
+        setIsRefOpen(false);
     }
 
     const Works = worksCopy.map((item, index) => {
-        return <WorkItem workId={item.workId} workData={item} onDelete={DeleteWork} onRefOpen={OpenRefPanel}/>
+        return <WorkItem workId={item.workId} workData={item} onDelete={DeleteWork} onRefOpen={() => OpenRefPanel(item.workId)}/>
     });
 
     return (
 
         <div className='EditPanel'>
+            {isRefOpen && <RefPanel workId={workRefId} workData={worksCopy[workRefId]} onClose={CloseRefPanel}/>}
             <div className='WorksForm'>
                 {Works}
                 <AddWorkButton src={Plus} alt="Plus" onClick={AddNewWork} className="WorkButton" classNameImg="AddWorkButtonImg" />
