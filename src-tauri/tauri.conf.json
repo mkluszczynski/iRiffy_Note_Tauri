@@ -7,8 +7,8 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "iriffy_note",
-    "version": "0.1.0"
+    "productName": "iRiffyNote",
+    "version": "0.9.0"
   },
   "tauri": {
     "allowlist": {
@@ -22,7 +22,7 @@
         "removeDir": true,
         "removeFile": true,
         "renameFile": true,
-        "scope": ["$APP/data.json"],
+        "scope": ["$APP/data.json", "$APP"],
         "writeFile": true
       }
     },
@@ -41,7 +41,7 @@
         "icons/icon.icns",
         "icons/noteLogo.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "Notatnik_iRiffy",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

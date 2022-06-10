@@ -26,7 +26,7 @@ const HomePage = () => {
 
   //Get path to json data file
   async function GetPath() {
-    const path = await join(await appDir(), "data.json")
+    const path = await join(await appDir(), "data.json");
     return path;
   }
 
