@@ -30,24 +30,28 @@ function App() {
     console.log("Clicked on list");
   }
 
-
-  async function CheckDir() {
+  //Check if app dir is created
+  async function CheckAppDir() {
     const path = await join(await appDir());
     console.log(path);
 
+    //Chceck if there is app folder
     try {
       await readDir(path).then((res) => {
         console.log(res);
       });
+
+      //If not create it
     } catch (error) {
       console.log(error);
       await createDir(path);
     }
   }
 
+  //Check if save file if created
   async function CheckSaveFile() {
 
-    await CheckDir();
+    await CheckAppDir();
 
     const path = await join(await appDir(), "data.json");
 

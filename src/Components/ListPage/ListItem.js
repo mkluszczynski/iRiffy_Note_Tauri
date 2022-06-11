@@ -16,6 +16,8 @@ const ListItem = ({ orderData, onEditClick, isEdit }) => {
     function SetWorksToDo(){
         setNoOfWorksToDo(0);
         setNoOfWorksDone(0);
+
+        //Loop to go through all works
         for(let i = 0 ; i < orderData.works.length; i++) {
             if(orderData.works[i].workIsDone === false){
                 setNoOfWorksToDo(value => value + 1);

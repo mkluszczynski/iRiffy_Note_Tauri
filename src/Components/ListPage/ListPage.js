@@ -57,6 +57,7 @@ const ListPage = () => {
 
     orderData.splice(orderId, 1);
 
+    //Refresh ids
     for(let i = 0 ; i < orderData.length ; i++){
       orderData[i].orderId = i;
     }
