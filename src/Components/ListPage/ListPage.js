@@ -16,7 +16,6 @@ const ListPage = () => {
 
   useEffect(() => {
     SetUpData();
-    console.log("XDDDDDDDDD")
   }, [isEditPanelOpen]);
 
   //Get path to json data file
@@ -66,7 +65,7 @@ const ListPage = () => {
   }
 
   const OrdersList = orderData.map((item, index) => {
-    return <ListItem orderData={item} onEditClick={() => OpenEditPanel(item.orderId)} isEdit={isEditPanelOpen}/>
+    return <ListItem orderData={item} onEditClick={() => OpenEditPanel(item.orderId)} isEdit={isEditPanelOpen} id={index}/>
   });
 
 

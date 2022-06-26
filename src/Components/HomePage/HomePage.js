@@ -127,7 +127,7 @@ const HomePage = () => {
         <img src={Line} alt="Line" className='HomePageLine'/>
 
         <h3 className='HomePageInfo'>Ilość wykonanych zleceń: {noOfOrdersDone}</h3>
-        <h3 className='HomePageInfo'>Całkowity przychód: {noOfIncome}</h3>
+        <h3 className='HomePageInfo'>Całkowity przychód: {noOfIncome}zł</h3>
     </div>
   )
 }
